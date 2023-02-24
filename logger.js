@@ -1,6 +1,6 @@
 let url ='http://mylogger.io/log';
 function log(message){
-    //send an HRRp request
+    //send an HTTP request
     console.log(message);
 }
-module.export.log=log;
+module.export=log;
