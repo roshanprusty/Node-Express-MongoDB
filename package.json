@@ -1,7 +1,6 @@
 {
-  "name": "node-js",
+  "name": "js",
   "version": "1.0.0",
-  "description": "",
   "main": "app.js",
   "type": "module",
   "scripts": {
@@ -16,5 +15,6 @@
   "bugs": {
     "url": "https://github.com/roshanprusty/Node-JS/issues"
   },
-  "homepage": "https://github.com/roshanprusty/Node-JS#readme"
+  "homepage": "https://github.com/roshanprusty/Node-JS#readme",
+  "description": ""
 }
