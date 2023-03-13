@@ -12,7 +12,7 @@ function importantAction(username) {
 function sayThankyou(username) {
     return new Promise((resolve, reject) => {
         setTimeout(function () {
-            reject(`${username} thank you for your contribution`);
+            resolve(`${username} thank you for your contribution`);
         }, 2000)
     });
 }
@@ -20,7 +20,7 @@ function dish(username) {
     return new Promise((resolve, reject) => {
         setTimeout(function () {
             resolve(`${username} what is your favourite dish?`);
-        }, 2000)
+        }, 500)
     });
 }
 const result = async () =>{
