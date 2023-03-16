@@ -10,7 +10,7 @@
 //     console.warn("see you soon");
 // }
 
-//setInterval
+//setInterval & clearInterval
 let count=0;
 const intID = setInterval(()=>{
     console.log(++count);
