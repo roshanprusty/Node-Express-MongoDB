@@ -16,5 +16,8 @@
     "url": "https://github.com/roshanprusty/Node-JS/issues"
   },
   "homepage": "https://github.com/roshanprusty/Node-JS#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
