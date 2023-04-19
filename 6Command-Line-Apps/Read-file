@@ -1,0 +1,5 @@
+dotenv: 
+
+https://www.youtube.com/watch?v=zwcvXd3kGbw&t=197s
+
+.env file --> here we can put such type of things that we would like to keep secret that we don't want to publish in git or github or bitbucket can be password for your database that can be certain sensitive information
