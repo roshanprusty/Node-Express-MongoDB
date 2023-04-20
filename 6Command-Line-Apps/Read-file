@@ -1,5 +1,7 @@
 dotenv: 
-
 https://www.youtube.com/watch?v=zwcvXd3kGbw&t=197s
-
 .env file --> here we can put such type of things that we would like to keep secret that we don't want to publish in git or github or bitbucket can be password for your database that can be certain sensitive information
+
+process.env:
+What is the use of process ENV in node JS?
+The process. env is a global variable injected at runtime by your Node. js application to depict the state of the environment your app is in at the time of initiation and utilize the same at runtime
