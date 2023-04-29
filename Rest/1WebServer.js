@@ -1,15 +1,25 @@
-// import fs from 'fs';
-// import http from 'http';
+import fs from 'fs';
+import http from 'http';
 
-// //create s server
-// const server=http.createServer((request, responce)=>{
-//     responce.end("Hello from the server!")
-//     console.log("A new request recieved");
-// });
+let value="Unable to fetch data from json file";
+fs.readFile('./index.html',function(err,data){
+    if(err){
+        console.log(err);
+        return;
+    } 
+    value=data;
+})
 
-// server.listen(8000, '127.0.0.1', () =>{
-//     //it will come in each new request
-//     console.log("server has started!");
-// })
+//create s server
+const server=http.createServer((request, responce)=>{
+    // responce.end(value.toString()) 
+    responce.end(value) //you can also send a html responce
+    console.log("A new request recieved");
+});
 
-// overview of how web works : 
+//http://127.0.0.1:8000/
+server.listen(8000, '127.0.0.1', () =>{
+    //it will come in each new request
+    console.log("server has started!");
+})
+
