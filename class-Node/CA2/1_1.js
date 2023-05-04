@@ -1,4 +1,3 @@
-// const zlib = require('zlib');
 import zlib from 'zlib';
 const originalText = 'Hello, world!';
 
