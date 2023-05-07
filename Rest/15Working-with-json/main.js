@@ -2,7 +2,7 @@ import http from 'http';
 import fs from 'fs';
 
 let html = fs.readFileSync("index.html", 'utf-8');
-
+let products = JSON.parse(fs.readFileSync("products.json", 'utf-8'));
 const server = http.createServer((request, response) => {
     let path = request.url;
 
@@ -27,14 +27,11 @@ const server = http.createServer((request, response) => {
         });
         response.end(html.replace('{{%Content%}}', 'You are in Contact page'));
     }
-    //Not -working
-    else if (path.toLocaleLowerCase() === '/Products') {
+    else if (path.toLocaleLowerCase() === '/products') {
         response.writeHead(200, {
             'Content-type': 'application/json'
         });
-        fs.readFile('./products.json','utf-8',(err,data)=>{
-            response.end(data);
-        })
+        response.end("You are in product page")
     }
     else {
         response.writeHead(200, {
