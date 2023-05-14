@@ -42,7 +42,7 @@ const server = http.createServer((request, response) => {
     }
     else if (path.toLocaleLowerCase() === '/products') {
         response.writeHead(200, {
-            'Content-type': 'text/html'
+            'Content-type': 'text/html' 
         });
         response.end(html.replace('{{%Content%}}',productHtmlArray.join(' ')));
         // console.log(productHtmlArray);
