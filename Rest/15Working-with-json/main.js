@@ -27,8 +27,8 @@ const server = http.createServer((request, response) => {
         response.end(html.replace('{{%Content%}}', 'You are in Home page'));
     }
     else if (path.toLocaleLowerCase() === '/about') {
-        response.writeHead(200, {
-            'Content-Type': 'text/html',
+        response.writeHead(200, { 
+            'Content-Type': 'text/html' ,
             'my-header': 'Hello-world'
         });
         response.end(html.replace('{{%Content%}}', 'You are in About page'));
