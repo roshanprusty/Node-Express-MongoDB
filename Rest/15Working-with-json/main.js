@@ -18,7 +18,7 @@ let productHtmlArray=products.map((prod)=>{
 })
 const server = http.createServer((request, response) => {
     let path = request.url;
-
+    // console.log(path); //About .... //Products
     if (path === '/' || path.toLocaleLowerCase() === '/home') {
         response.writeHead(200, {
             'Content-Type': 'text/html',
