@@ -49,11 +49,11 @@ const server = http.createServer((request, response) => {
             let productHtmlArray=products.map((prod)=>{
                 return replaceHtml(productsListHtml, prod);
             })
-            let productResponseHtml = html.replace('{{%CONTENT%}}', productHtmlArray.join(','));
+            // let productResponseHtml = html.replace('{{%CONTENT%}}', productHtmlArray.join(','));
             response.writeHead(200, {
                 'Content-type': 'text/html'
             });
-            response.end(productResponseHtml);
+            response.end(html.replace('{{%Content%}}',productHtmlArray.join(' ')));
         } else {
             response.end("This is a product with ID = " + query.id);
         }
