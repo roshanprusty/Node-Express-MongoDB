@@ -1,28 +1,31 @@
 import http from 'http';
 import fs from 'fs';
 import url from 'url';
-import {rh as replaceHtml} from './Modules/replaceHtml.js';
-// const replaceHtml= require('./Modules/replaceHtml');
+import event from 'events';
+
+
+import { User as user } from './user.js';
 
 let html = fs.readFileSync("index.html", 'utf-8');
 let products = JSON.parse(fs.readFileSync("products.json", 'utf-8'));
 let productsListHtml = fs.readFileSync("product-list.html", 'utf-8');
+// let product
+function replaceHtml(template, product) {
+    let output = template.replace('{{%IMAGE%}}', product.productImage);
+    output = output.replace('{{%NAME%}}', product.name);
+    output = output.replace('{{%MODELNAME%}}', product.modeName);
+    output = output.replace('{{%MODELNUMBER%}}', product.modelNumber);
+    output = output.replace('{{%SIZE%}}', product.size);
+    output = output.replace('{{%CAMERA%}}', product.camera);
+    output = output.replace('{{%PRICE%}}', product.price);
+    output = output.replace('{{%COLOR%}}', product.color);
+    output = output.replace('{{%ID%}}', product.id);
 
-// function replaceHtml(template, product) {
-//     let output = template.replace('{{%IMAGE%}}', product.productImage);
-//     output = output.replace('{{%NAME%}}', product.name);
-//     output = output.replace('{{%MODELNAME%}}', product.modeName);
-//     output = output.replace('{{%MODELNUMBER%}}', product.modelNumber);
-//     output = output.replace('{{%SIZE%}}', product.size);
-//     output = output.replace('{{%CAMERA%}}', product.camera);
-//     output = output.replace('{{%PRICE%}}', product.price);
-//     output = output.replace('{{%COLOR%}}', product.color);
-//     output = output.replace('{{%ID%}}', product.id);
+    return output;
+}
 
-//     return output;
-// }
-
-const server = http.createServer((request, response) => {
+const server = http.createServer();
+server.on('request', (request, response)=>{
     let { query, pathname: path } = url.parse(request.url, true);
 
     if (path === '/' || path.toLocaleLowerCase() === '/home') {
@@ -68,11 +71,24 @@ const server = http.createServer((request, response) => {
         });
         response.end(html.replace('{{%Content%}}', 'ERROR:404 - Page not found'));
     }
-
-});
+})
 
 server.listen(8000, '127.0.0.1', () => {
     console.log("server has started!");
 })
 
+/* This code is creating an instance of the `EventEmitter` class from the `events` module in Node.js.
+It then defines two event listeners for the `userCreated` event, which will be triggered when the
+event is emitted. Finally, it emits the `userCreated` event with the arguments `101` and `'Roshan'`,
+which will trigger the two event listeners and log messages to the console. This code demonstrates
+the use of event-driven programming in Node.js. */
+let myEmitter = new user();
 
+myEmitter.on('userCreated', (id,name)=>{
+    console.log(`A new user ${name} with ID ${id} is created!`);
+})
+myEmitter.on('userCreated', (id,name)=>{
+    console.log(`A new user ${name} with ID ${id} is added to Database!`);
+})
+
+myEmitter.emit('userCreated', 101, 'Roshan');
