@@ -1,0 +1,31 @@
+Let's first Understand how fs.readFile and fs.writeFile works
+
+source code --- Read Buffer --- fs.readFile
+source code --- Write Buffer --- fs.writeFile
+
+Here actually what is happening is Read buffer used to read the whole data at once and that whole data are stored in system memory.
+same gose to for fs.writeFile
+
+To Counter such type of problem STREAM comes into the story
+while STREAM what does is, It can process data piece by piece instead of reading or writing the whole data at once.
+In short, If the file is too long there stream what do is it will read data chunks by chunks: It will little data and send it to fs.readStream and then another more chunks. Like this it will continue till the whole data has been read.
+
+Example : Youtube, Netflix
+
+There are 4 types of stream are there:
+1. Readable Stream : The readable streams are the one from where we can read or consume data chunk by chunk.
+
+Important readable stream events: data & end
+Important readable stream methods: read & pipe
+
+2. Writable Stream : The writable streams are the one where we can write or produce data chunk by chunk.
+
+Important readable stream events: drain & finish
+Important readable stream methods: write & end
+
+3. Duplex Stream: Duplex stream is simply a stream that is both readable & writable at the same time.
+Example: Web Sockets
+
+4. Transform Stream:  Transform stream are duplex stream which can also modify or Transform data as it is read or written
+Example: zlib
+
