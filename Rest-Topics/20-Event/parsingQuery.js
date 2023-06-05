@@ -25,7 +25,7 @@ function replaceHtml(template, product) {
 }
 
 const server = http.createServer();
-server.on('request', (request, response)=>{
+server.on('request', (request, response) => {
     let { query, pathname: path } = url.parse(request.url, true);
 
     if (path === '/' || path.toLocaleLowerCase() === '/home') {
@@ -51,14 +51,14 @@ server.on('request', (request, response)=>{
     }
     else if (path.toLocaleLowerCase() === '/products') {
         if (!query.id) {
-            let productHtmlArray=products.map((prod)=>{
+            let productHtmlArray = products.map((prod) => {
                 return replaceHtml(productsListHtml, prod);
             })
             // let productResponseHtml = html.replace('{{%CONTENT%}}', productHtmlArray.join(','));
             response.writeHead(200, {
                 'Content-type': 'text/html'
             });
-            response.end(html.replace('{{%Content%}}',productHtmlArray.join(' ')));
+            response.end(html.replace('{{%Content%}}', productHtmlArray.join(' ')));
         } else {
             response.end("This is a product with ID = " + query.id);
         }
@@ -84,10 +84,10 @@ which will trigger the two event listeners and log messages to the console. This
 the use of event-driven programming in Node.js. */
 let myEmitter = new user();
 
-myEmitter.on('userCreated', (id,name)=>{
+myEmitter.on('userCreated', (id, name) => {
     console.log(`A new user ${name} with ID ${id} is created!`);
 })
-myEmitter.on('userCreated', (id,name)=>{
+myEmitter.on('userCreated', (id, name) => {
     console.log(`A new user ${name} with ID ${id} is added to Database!`);
 })
 
