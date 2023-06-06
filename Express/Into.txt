@@ -1,0 +1,5 @@
+Express is completely build on Node JS
+It is one of the most popular framework for Node JS
+Express contains very robust and useful set of features
+Express allows to write node js application faster & simpler
+with express we can organize node js code in MVC architecture
