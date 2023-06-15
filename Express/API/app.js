@@ -20,8 +20,14 @@ app.get('/api/v1/movies', (req, res)=>{
     })
 })
 app.post('/api/v1/movies', (req,res)=>{
-    console.log(req.body);
+    // console.log(req.body);
     const newID = movies[movies.length-1].id+1;
+    /* `const newMovie = Object.assign({id:newID}, req.body);` is creating a new object `newMovie` by
+    merging two objects - `{id:newID}` and `req.body`. The `{id:newID}` object is created to add a
+    new unique ID to the movie object. The `req.body` object contains the data sent in the request
+    body. The `Object.assign()` method copies the values of all enumerable properties from one or
+    more source objects to a target object. In this case, it is copying the `id` property from
+    `{id:newID}` and all other properties from `req.body` to create a new object `newMovie`. */
     const newMovie = Object.assign({id:newID}, req.body);
     movies.push(newMovie);
     fs.writeFile('./data/movies.json', JSON.stringify(movies), (err)=>{
