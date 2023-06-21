@@ -18,6 +18,7 @@ app.get('/about', (req, res) => {
    
 });
 
+
 app.get('/contact', (req, res) => {
     const filePath = path.join(__dirname, 'public', 'contact.html');
     res.sendFile(filePath);
