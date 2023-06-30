@@ -1,0 +1,2 @@
+MongoDB is a document oriented, non-relational NoSQL database.
+Brief about MongoDB: https://www.youtube.com/watch?v=BBKQuvxRtpQ&list=PL1BztTYDF-QPdTvgsjf8HOwO4ZVl_LhxS&index=49
