@@ -1,2 +1,23 @@
 MongoDB is a document oriented, non-relational NoSQL database.
+
 Brief about MongoDB: https://www.youtube.com/watch?v=BBKQuvxRtpQ&list=PL1BztTYDF-QPdTvgsjf8HOwO4ZVl_LhxS&index=49
+
+MongoDB store data in BSON format (BSON: Binary JSON).
+
+MongoDB cheatsheet: https://gist.github.com/bradtraversy/f407d642bdc3b31681bc7e56d95485b6
+
+
+//Most use command
+show dbs
+use ...
+show collections
+db.{collection_name}.insert({});
+db.{collection_name}.insert({}, {});
+db.{collection_name}.find(); //it will provide all the data if filtered information is not provided -- it returns data in batches -- that batches called as cursor
+db.{collection_name}.find().toArray(); //it will provide all the data -- Internally it is returning batches of data and array is requesting for more data till last.
+db.{collection_name}.drop();
+db.{collection_name}.find({}); //if you don't mentioned data to find then there it will return the first data from the collection_name db
+db.{collection_name}.updateOne({name: "steve"}, {$set: {age:30}}); //it will update the age whose name is steve. if there is multiple steve there it will update first one whose name is "steve"
+db.{collection_name}.updateMany({name: "steve"}, {$set: {age:30}}); //it will update all the data whose name is steve. 
+db.{collection_name}.deleteOne({})
+db.{collection_name}.deleteMany({}) //when we don't give any filter it will delete all the data
