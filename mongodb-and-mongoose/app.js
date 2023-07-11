@@ -1,7 +1,7 @@
 //IMPORT PACKAGE
-const express = require('express');
-const morgan = require('morgan');
-const moviesRouter = require('./Routes/moviesRoutes');
+import express from 'express';
+import morgan from 'morgan';
+import moviesRouter from './Routes/moviesRoutes';
 
 let app = express();
 
