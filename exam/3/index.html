@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Details</title>
+</head>
+<body>
+  <h1>Student Details</h1>
+  <ul id="students-list">
+    <!-- Student details will be populated here -->
+  </ul>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+
+    // Function to display student details in the HTML
+    function displayStudentDetails(students) {
+      const studentsList = document.getElementById('students-list');
+      studentsList.innerHTML = '';
+      students.forEach((student) => {
+        const listItem = document.createElement('li');
+        listItem.textContent = `${student.name} (Age: ${student.age})`;
+        studentsList.appendChild(listItem);
+      });
+    }
+
+    // Function to handle the event of receiving an even number
+    function handleEvenNumber(number) {
+      console.log('Received even number:', number);
+    }
+
+    // Socket.io event handling
+    socket.on('connect', () => {
+      console.log('Connected to server.');
+      socket.on('evenNumber', handleEvenNumber);
+    });
+
+    // Fetch student details from the server
+    fetch('/students')
+      .then((response) => response.json())
+      .then((students) => displayStudentDetails(students));
+  </script>
+</body>
+</html>

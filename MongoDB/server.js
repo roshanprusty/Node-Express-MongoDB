@@ -4,7 +4,7 @@ dotenv.config({path:'./config.env'});
 
 import app from './app.js';
 
-console.log(process.env);
+// console.log(process.env); 
 
 mongoose.connect(process.env.CONN_STR, {
     useNewUrlParser: true

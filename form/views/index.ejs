@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form to MongoDB</title>
+</head>
+<body>
+    <h1>Submit Data to MongoDB</h1>
+    <form id="dataForm">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" required><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <!-- Notification container -->
+    <div id="notification" style="display: none; background-color: #4CAF50; color: white; text-align: center; padding: 10px; border-radius: 5px;">
+        Form submitted successfully!
+    </div>
+
+    <script>
+        // Client-side JavaScript to handle form submission
+        document.getElementById('dataForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const formObject = {};
+            formData.forEach((value, key) => {
+                formObject[key] = value;
+            });
+
+            try {
+                const response = await fetch('/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formObject),
+                });
+
+                if (response.ok) {
+                    // Show the notification
+                    const notification = document.getElementById('notification');
+                    notification.style.display = 'block';
+
+                    // Hide the notification after 3 seconds (adjust as needed)
+                    setTimeout(() => {
+                        notification.style.display = 'none';
+                    }, 3000);
+
+                    console.log('Data saved successfully:', data);
+                } else {
+                    console.error('Error saving data to server:', response.status);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        });
+    </script>
+</body>
+</html>
