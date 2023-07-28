@@ -1,9 +1,11 @@
-import exp from 'constants';
+// import exp from 'constants';
 import express from 'express';
-import fs from 'fs';
-import morgan from 'morgan';
+// import fs from 'fs';
+// import morgan from 'morgan';
+// import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-
+dotenv.config({path:'./config.env'});
 
 let app = express();
 // let movies = JSON.parse(fs.readFileSync('./data/movies.json'));
@@ -142,24 +144,18 @@ let app = express();
 //     })
 // })
 
-
-
 // console.log(process.env);
+
 mongoose.connect(process.env.CONN_STR, {
     useNewUrlParser: true
+}).then((conn)=>{
+    console.log("DB Connection Successfull");
+}).catch((error)=>{
+    console.log("Some Error Occured", error);
 })
-.then((conn) => {
-    // console.log(conn);
-    console.log("DB Connection Successful");
-})
-.catch((err) => {
-    console.error(err);
-    // Handle the error appropriately, e.g. notify appropriate parties or gracefully exit the application 
-});
-
 
 const movieSchema = new mongoose.Schema({
-    name: {
+    name: { 
         type: String,
         required: [true, "Name is required field"],
         unique: true
@@ -178,15 +174,12 @@ const movieSchema = new mongoose.Schema({
     },
 });
 const Movie = mongoose.model("Movie", movieSchema);
-const testMovie = new Movie(
-    {
-        // "_id": new Types.ObjectId(),
-        name: "Kerela Story",
-        description: "Action packed movies starting bruce willis in this trilling adventure",
-        duration: 139,
-        rating: 4.5
-    }
-);
+const testMovie = new Movie({
+    name: "Krish",
+    description: "blahhhhhhhhhhhh HH HH HH HH HH HH",
+    duration: 120,
+    rating: 3.4
+});
 testMovie.save()
     .then(doc => {
         console.log(doc);
