@@ -174,19 +174,19 @@ const movieSchema = new mongoose.Schema({
     },
 });
 const Movie = mongoose.model("Movie", movieSchema);
-const testMovie = new Movie({
-    name: "Krish",
-    description: "blahhhhhhhhhhhh HH HH HH HH HH HH",
-    duration: 120,
-    rating: 3.4
-});
-testMovie.save()
-    .then(doc => {
-        console.log(doc);
-    })
-    .catch(err => {
-        console.log(err);
-    })
+// const testMovie = new Movie({
+//     name: "Krish",
+//     description: "blahhhhhhhhhhhh HH HH HH HH HH HH",
+//     duration: 120,
+//     rating: 3.4
+// });
+// testMovie.save()
+//     .then(doc => {
+//         console.log(doc);
+//     })
+//     .catch(err => {
+//         console.log(err);
+//     })
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
