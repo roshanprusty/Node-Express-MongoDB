@@ -21,6 +21,9 @@ function replaceHtml(template, product) {
 }
 
 const server = http.createServer((request, response) => {
+    /* The line `let { query, pathname: path } = url.parse(request.url, true);` is using destructuring
+    assignment to extract the `query` and `pathname` properties from the result of
+    `url.parse(request.url, true)`. */
     let { query, pathname: path } = url.parse(request.url, true);
 
     if (path === '/' || path.toLocaleLowerCase() === '/home') {

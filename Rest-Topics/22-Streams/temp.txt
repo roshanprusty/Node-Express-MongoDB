@@ -8,7 +8,7 @@ same gose to for fs.writeFile
 
 To Counter such type of problem STREAM comes into the story
 while STREAM what does is, It can process data piece by piece instead of reading or writing the whole data at once.
-In short, If the file is too long there stream what do is it will read data chunks by chunks: It will little data and send it to fs.readStream and then another more chunks. Like this it will continue till the whole data has been read.
+In short, If the file is too long there stream what do is it will read data chunks by chunks: It will take little data and send it to fs.readStream and then another more chunks. Like this it will continue till the whole data has been read.
 
 Example : Youtube, Netflix
 
